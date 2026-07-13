@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>校內二手書面交預約系統</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">First Working Slice</p>
+        <h1>校內二手書面交預約系統</h1>
+      </div>
+      <div class="scope-note">HTML / CSS / JavaScript / Mock Data</div>
+    </header>
+
+    <main class="layout">
+      <section class="panel seller-panel" aria-labelledby="seller-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">FR-04 / NFR-01</p>
+            <h2 id="seller-title">賣方新增書籍</h2>
+          </div>
+          <span class="status-pill">賣方學生</span>
+        </div>
+
+        <form id="book-form" class="book-form">
+          <label>
+            書名
+            <input id="title" name="title" type="text" placeholder="例如：系統分析與設計" required>
+          </label>
+
+          <label>
+            類別
+            <select id="category" name="category" required>
+              <option value="">請選擇類別</option>
+              <option value="資訊管理">資訊管理</option>
+              <option value="程式設計">程式設計</option>
+              <option value="資料庫">資料庫</option>
+              <option value="通識課程">通識課程</option>
+              <option value="其他">其他</option>
+            </select>
+          </label>
+
+          <label>
+            價格
+            <input id="price" name="price" type="number" min="0" placeholder="例如：300" required>
+          </label>
+
+          <label>
+            書況
+            <select id="condition" name="condition" required>
+              <option value="">請選擇書況</option>
+              <option value="近全新">近全新</option>
+              <option value="有少量筆記">有少量筆記</option>
+              <option value="有明顯使用痕跡">有明顯使用痕跡</option>
+            </select>
+          </label>
+
+          <label>
+            照片說明
+            <input id="photoNote" name="photoNote" type="text" placeholder="例如：封面完整，內頁有鉛筆註記" required>
+          </label>
+
+          <label>
+            交易狀態
+            <select id="status" name="status" required>
+              <option value="待交易">待交易</option>
+              <option value="交易預約中">交易預約中</option>
+              <option value="交易完成">交易完成</option>
+            </select>
+          </label>
+
+          <button type="submit">新增書籍</button>
+        </form>
+      </section>
+
+      <section class="panel buyer-panel" aria-labelledby="buyer-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">FR-01 / FR-03</p>
+            <h2 id="buyer-title">買方搜尋與提出需求</h2>
+          </div>
+          <span class="status-pill">買方學生</span>
+        </div>
+
+        <div class="search-row">
+          <label>
+            搜尋書名、類別或關鍵字
+            <input id="search" type="search" placeholder="輸入關鍵字">
+          </label>
+          <button id="clear-search" type="button">清除</button>
+        </div>
+
+        <div id="book-list" class="book-list" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <section class="panel detail-panel" aria-labelledby="detail-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Book Detail</p>
+          <h2 id="detail-title">書籍詳細資料</h2>
+        </div>
+      </div>
+      <div id="detail-content" class="detail-content">
+        <p class="empty-state">請從書籍列表選擇一本書查看詳細資料。</p>
+      </div>
+    </section>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
