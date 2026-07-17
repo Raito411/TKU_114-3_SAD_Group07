@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>校內二手書系統登入</title>
+    <link rel="stylesheet" href="login.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Formal Login / SQLite</p>
+        <h1>校內二手書面交預約系統</h1>
+      </div>
+      <p id="session-label" class="session-label">尚未登入</p>
+    </header>
+
+    <main class="app-shell">
+      <section class="panel auth-panel" aria-labelledby="auth-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Account</p>
+            <h2 id="auth-title">註冊 / 登入</h2>
+          </div>
+        </div>
+
+        <div class="auth-grid">
+          <form id="register-form" class="stack">
+            <h3>註冊學生帳號</h3>
+            <label>
+              姓名
+              <input name="name" type="text" required>
+            </label>
+            <label>
+              Email
+              <input name="email" type="email" required>
+            </label>
+            <label>
+              密碼
+              <input name="password" type="password" minlength="6" required>
+            </label>
+            <button type="submit">註冊</button>
+          </form>
+
+          <form id="login-form" class="stack">
+            <h3>登入</h3>
+            <label>
+              Email
+              <input name="email" type="email" required>
+            </label>
+            <label>
+              密碼
+              <input name="password" type="password" required>
+            </label>
+            <button type="submit">登入</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="workspace" class="workspace hidden">
+        <section class="panel" aria-labelledby="seller-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Sell</p>
+              <h2 id="seller-title">刊登二手書</h2>
+            </div>
+          </div>
+
+          <form id="book-form" class="book-form">
+            <label>
+              書名
+              <input name="title" type="text" required>
+            </label>
+            <label>
+              類別
+              <select name="category" required>
+                <option value="資訊管理">資訊管理</option>
+                <option value="程式設計">程式設計</option>
+                <option value="資料庫">資料庫</option>
+                <option value="通識課程">通識課程</option>
+                <option value="其他">其他</option>
+              </select>
+            </label>
+            <label>
+              原價
+              <input name="price" type="number" min="0" required>
+            </label>
+            <label>
+              折扣 %
+              <input name="discount" type="number" min="0" max="100" value="0" required>
+            </label>
+            <label>
+              書況
+              <input name="condition_text" type="text" required>
+            </label>
+            <label>
+              照片說明
+              <input name="photo_note" type="text" required>
+            </label>
+            <label>
+              面交地點
+              <input name="meeting_place" type="text" required>
+            </label>
+            <button type="submit">刊登書籍</button>
+          </form>
+        </section>
+
+        <section class="panel" aria-labelledby="books-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Buy</p>
+              <h2 id="books-title">搜尋與購買</h2>
+            </div>
+            <button id="refresh-button" class="secondary-button" type="button">重新整理</button>
+          </div>
+          <label>
+            搜尋書名、類別或書況
+            <input id="search" type="search">
+          </label>
+          <div id="book-list" class="card-list" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" aria-labelledby="requests-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Requests</p>
+              <h2 id="requests-title">我的交易需求</h2>
+            </div>
+          </div>
+          <div class="request-grid">
+            <div>
+              <h3>我送出的購買需求</h3>
+              <div id="buyer-requests" class="card-list"></div>
+            </div>
+            <div>
+              <h3>我收到的購買需求</h3>
+              <div id="seller-requests" class="card-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="mailbox-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Mailbox</p>
+              <h2 id="mailbox-title">我的信箱</h2>
+            </div>
+          </div>
+          <div id="mailbox-list" class="card-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="login.js"></script>
+  </body>
+</html>

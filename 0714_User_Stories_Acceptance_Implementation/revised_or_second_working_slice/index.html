@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>校內二手書面交預約系統</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Revised and Second Working Slice</p>
+        <h1>校內二手書面交預約系統</h1>
+      </div>
+      <div class="header-actions">
+        <div id="auth-status" class="scope-note">尚未登入</div>
+        <button id="open-register" class="secondary-button" type="button">註冊</button>
+        <button id="open-login" type="button">登入</button>
+        <button id="logout-button" class="secondary-button hidden" type="button">登出</button>
+      </div>
+    </header>
+
+    <nav class="view-tabs" aria-label="主要功能分頁">
+      <button class="tab-button active" type="button" data-tab-target="market">買方搜尋</button>
+      <button class="tab-button" type="button" data-tab-target="seller">賣方刊登/編輯</button>
+      <button class="tab-button" type="button" data-tab-target="transaction">面交確認與交易狀態</button>
+      <button class="tab-button" type="button" data-tab-target="mailbox">使用者信箱</button>
+    </nav>
+
+    <div id="main-view" class="app-view">
+      <main class="layout">
+        <section class="panel seller-panel hidden" data-tab-panel="seller" aria-labelledby="seller-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">FR-04 / FR-08 / FR-09 / NFR-01</p>
+            <h2 id="seller-title">賣方新增書籍</h2>
+          </div>
+          <span class="status-pill">賣方學生</span>
+        </div>
+
+        <form id="book-form" class="book-form">
+          <label>
+            書名
+            <input id="title" name="title" type="text" placeholder="例如：系統分析與設計" required>
+          </label>
+
+          <label>
+            類別
+            <select id="category" name="category" required>
+              <option value="">請選擇類別</option>
+              <option value="資訊管理">資訊管理</option>
+              <option value="程式設計">程式設計</option>
+              <option value="資料庫">資料庫</option>
+              <option value="通識課程">通識課程</option>
+              <option value="其他">其他</option>
+            </select>
+          </label>
+
+          <div class="price-row">
+            <label>
+              原價
+              <input id="price" name="price" type="number" min="0" placeholder="例如：300" required>
+            </label>
+
+            <label>
+              折扣 %
+              <input id="discount" name="discount" type="number" min="0" max="100" value="0" required>
+            </label>
+          </div>
+
+          <p id="discount-preview" class="discount-preview">折扣後價格：NT$ 0</p>
+
+          <label>
+            書況
+            <select id="condition" name="condition" required>
+              <option value="">請選擇書況</option>
+              <option value="近全新">近全新</option>
+              <option value="有少量筆記">有少量筆記</option>
+              <option value="有明顯使用痕跡">有明顯使用痕跡</option>
+            </select>
+          </label>
+
+          <label>
+            照片說明
+            <input id="photoNote" name="photoNote" type="text" placeholder="例如：封面完整，內頁有鉛筆註記" required>
+          </label>
+
+          <label>
+            賣方指定面交地點
+            <input id="sellerMeetingPlace" name="sellerMeetingPlace" type="text" placeholder="例如：商管大樓一樓大廳" required>
+          </label>
+
+          <div class="form-actions">
+            <button id="save-book-button" type="submit">新增書籍</button>
+            <button id="cancel-edit-button" class="secondary-button hidden" type="button">取消編輯</button>
+          </div>
+        </form>
+        </section>
+
+        <section class="panel buyer-panel" data-tab-panel="market" aria-labelledby="buyer-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">FR-01 / FR-03</p>
+            <h2 id="buyer-title">買方搜尋與提出需求</h2>
+          </div>
+          <span class="status-pill">買方學生</span>
+        </div>
+
+        <div class="search-row">
+          <label>
+            搜尋書名、類別或關鍵字
+            <input id="search" type="search" placeholder="輸入關鍵字">
+          </label>
+          <button id="clear-search" type="button">清除</button>
+        </div>
+
+        <div id="book-list" class="book-list" aria-live="polite"></div>
+        </section>
+      </main>
+
+      <section class="panel meeting-panel hidden" data-tab-panel="transaction" aria-labelledby="meeting-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">FR-05 / FR-06 / NFR-02</p>
+          <h2 id="meeting-title">面交確認與交易狀態</h2>
+        </div>
+        <span class="status-pill">買賣雙方</span>
+      </div>
+
+      <div class="meeting-layout">
+        <div class="transaction-panel">
+          <label>
+            交易管理身分
+            <select id="transaction-role">
+              <option value="buyer">買方學生</option>
+              <option value="seller">賣方學生</option>
+            </select>
+          </label>
+
+          <div id="buyer-transaction-list" class="transaction-list" aria-live="polite"></div>
+          <div id="seller-listing-list" class="transaction-list hidden" aria-live="polite"></div>
+        </div>
+
+        <aside class="transaction-side-panel">
+          <form id="meeting-form" class="meeting-form hidden">
+            <div>
+              <p class="eyebrow">Seller Tools</p>
+              <h3>交易狀態管理</h3>
+            </div>
+
+            <label>
+              輸入刊登序號管理交易狀態
+              <input id="listing-number-lookup" name="listingNumberLookup" type="number" min="1" placeholder="例如：7003">
+            </label>
+
+            <button id="find-listing-button" class="secondary-button" type="button">依序號找到書籍</button>
+
+            <label>
+              選擇賣方刊登中的書籍
+              <select id="meeting-book" name="bookId" required></select>
+            </label>
+
+            <label>
+              面交時間
+              <input id="meeting-time" name="meetingTime" type="datetime-local" required>
+            </label>
+
+            <label>
+              面交地點
+              <input id="meeting-place" name="meetingPlace" type="text" placeholder="預設為賣方刊登時指定的面交地點" required>
+            </label>
+
+            <label>
+              賣方更新交易狀態
+              <select id="meeting-status" name="meetingStatus" required>
+                <option value="未交易">未交易</option>
+                <option value="交易中">交易中</option>
+                <option value="交易完成">交易完成</option>
+              </select>
+            </label>
+
+            <button type="submit">賣方儲存面交與狀態</button>
+          </form>
+        </aside>
+      </div>
+      </section>
+
+      <section class="panel mailbox-panel hidden" data-tab-panel="mailbox" aria-labelledby="mailbox-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Mailbox</p>
+            <h2 id="mailbox-title">使用者信箱</h2>
+          </div>
+          <span class="status-pill">登入使用者</span>
+        </div>
+        <div id="notification-list" class="notification-list" aria-live="polite"></div>
+      </section>
+    </div>
+
+    <section id="detail-view" class="panel detail-panel app-view hidden" aria-labelledby="detail-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Book Detail</p>
+          <h2 id="detail-title">書籍詳細資料</h2>
+        </div>
+        <button id="back-to-list" class="secondary-button" type="button">返回列表</button>
+      </div>
+      <div id="detail-content" class="detail-content">
+        <p class="empty-state">請返回列表選擇一本書查看詳細資料。</p>
+      </div>
+    </section>
+
+    <div id="auth-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+      <div class="modal-panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Account</p>
+            <h2 id="auth-title">登入</h2>
+          </div>
+          <button id="close-auth" class="secondary-button" type="button">關閉</button>
+        </div>
+
+        <div class="auth-mode-tabs" aria-label="帳號操作">
+          <button id="register-mode" class="tab-button" type="button">註冊</button>
+          <button id="login-mode" class="tab-button active" type="button">登入</button>
+        </div>
+
+        <form id="register-form" class="book-form hidden">
+          <label>
+            姓名
+            <input name="name" type="text" placeholder="例如：王小明" required>
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" placeholder="student@example.com" required>
+          </label>
+          <label>
+            密碼
+            <input name="password" type="password" minlength="4" required>
+          </label>
+          <button type="submit">建立帳號</button>
+        </form>
+
+        <form id="login-form" class="book-form">
+          <label>
+            Email
+            <input name="email" type="email" placeholder="student@example.com" required>
+          </label>
+          <label>
+            密碼
+            <input name="password" type="password" required>
+          </label>
+          <button type="submit">登入系統</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
