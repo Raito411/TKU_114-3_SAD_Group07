@@ -4,7 +4,7 @@
 
 | 項目 | 版本或連結 | 狀態 | 問題與補救方式 | 負責人 |
 | --- | --- | --- | --- | --- |
-| 專案章程第 2 版 | `0708_Project_Charter_Studio/project_charter_v2.md` | 已有 | 需補 GitHub 連結或 commit 識別碼 | 孫梓翔 |
+| 專案章程第 2 版 | `0708_Project_Charter_Studio/project_charter_v2.md` | 已有 | 主要內容 commit：`d1f772a2` | 孫梓翔 |
 | 需求來源表 | `0713_Requirements_Code_Agent/requirements_source_table.md` | 已有 | 目前來源主要為 Project Charter v2 與模擬訪談，後續可加入實際訪談 | 孫梓翔 |
 | 候選需求清單 | `0713_Requirements_Code_Agent/candidate_requirements.md` | 已有 | FR-05、FR-06、NFR-02 已由第二個可操作切片示意支援；FR-07 已以交易失敗、信任度 0 停權與資料清理呈現基本管理規則 | 孫梓翔 |
 | 7/13 實作任務書 | `0713_Requirements_Code_Agent/code_agent_implementation_brief.md` | 已有 | 需在 0714 更新為修正或第二切片任務書 | 孫梓翔 |

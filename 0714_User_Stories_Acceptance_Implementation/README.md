@@ -32,7 +32,7 @@ GitHub 儲存庫連結：https://github.com/Raito411/TKU_114-3_SAD_Group07
 | 需求與畫面對照表              | [requirements_to_screen.md](requirements_to_screen.md)                   | 已依第一個切片畫面初填 |
 | 手動驗收測試                  | [manual_acceptance_test.md](manual_acceptance_test.md)                   | 已依 0713 README 驗收方式初填 |
 | 生成式 AI／程式碼代理使用紀錄 | [ai_code_agent_log.md](ai_code_agent_log.md)                             | 已更新 |
-| 證據資料                      | [evidence/](evidence/)                                                   | 待放入截圖或測試證據 |
+| 證據資料                      | [evidence/](evidence/)                                                   | 已放入 MAT-01 至 MAT-10 截圖證據 |
 | 修正版或第二個可操作切片      | [revised_or_second_working_slice/](revised_or_second_working_slice/)     | 已新增賣方折扣、面交安排與交易狀態更新功能 |
 | 正式資料庫後端版本            | [formal_database_backend/](formal_database_backend/)                     | 已建立 SQLite 資料庫、登入 API、書籍 API、購買需求 API 與通知 API |
 
@@ -71,16 +71,16 @@ GitHub 儲存庫連結：https://github.com/Raito411/TKU_114-3_SAD_Group07
 0714 靜態切片與正式資料庫登入版本分開保存；formal_database_backend/ 已納入本期資料庫與自建註冊/登入版本。
 本期仍不包含線上付款、第三方金流、物流、跨校交易、手機原生 App、學校正式單一登入、正式學校帳號或真實身分驗證。
 目前 0714 修正版第一個可操作切片已新增賣方折扣功能，第二個可操作切片已新增面交安排、交易狀態更新與面交資訊隱私呈現；面交確認與交易狀態、使用者信箱已整理為獨立分頁。
-commit 識別碼尚未填入。
+主要內容 commit 識別碼：`d1f772a2`
 ```
 
 ## 本次提交紀錄
 
 | 類型 | 提交訊息                             | Commit 識別碼 |
 | ---- | ------------------------------------ | ------------- |
-| docs | docs: 完成使用者故事與需求文件包初稿 |               |
-| feat | feat: 完成第二個可操作切片           |               |
-| test | test: 補上手動驗收測試與修正紀錄     |               |
+| docs | docs: 完成使用者故事與需求文件包初稿 | `d1f772a2` |
+| feat | feat: 完成第二個可操作切片           | `d1f772a2` |
+| test | test: 補上手動驗收測試與修正紀錄     | `d1f772a2` |
 
 ## 今日完成檢查
 
@@ -93,11 +93,11 @@ commit 識別碼尚未填入。
 | 驗收條件                 | 是 | [acceptance_criteria.md](acceptance_criteria.md) | 已補正常、例外與邊界情境 |
 | 需求品質檢查             | 是 | [requirements_quality_review.md](requirements_quality_review.md) | 需後續人工確認 |
 | 需求優先順序             | 是 | [requirements_priority.md](requirements_priority.md) | 需小組做最後決定 |
-| 需求文件包初稿           | 是 | [requirements_package_draft.md](requirements_package_draft.md) | 需補 commit 識別碼 |
+| 需求文件包初稿           | 是 | [requirements_package_draft.md](requirements_package_draft.md) | 已補主要內容 commit：`d1f772a2` |
 | 實作待辦清單             | 是 | [implementation_backlog.md](implementation_backlog.md) | 已同步 MAT-01 至 MAT-13 驗收狀態 |
 | 更新後實作任務書         | 是 | [updated_code_agent_brief.md](updated_code_agent_brief.md) | 已填入本次完成目標與驗收結果 |
 | 修正版或第二個可操作切片 | 是 | [revised_or_second_working_slice/](revised_or_second_working_slice/) | 已新增折扣、面交安排、交易狀態更新、使用者信箱與四分頁整理，並已補 MAT-01 至 MAT-10 evidence |
 | 需求與畫面對照表         | 是 | [requirements_to_screen.md](requirements_to_screen.md) | 已同步修正版切片、信箱、正式資料庫與停權規則 |
 | 手動驗收測試             | 是 | [manual_acceptance_test.md](manual_acceptance_test.md) | MAT-01 至 MAT-13 已標注通過並補齊證據或 API 測試紀錄 |
-| GitHub 更新              | 部分 | 本資料夾 | 尚未填 commit 識別碼 |
+| GitHub 更新              | 是 | 本資料夾 | 已建立主要內容 commit：`d1f772a2` |
 | 生成式 AI 使用紀錄       | 是 | [ai_code_agent_log.md](ai_code_agent_log.md) | 已更新 |
