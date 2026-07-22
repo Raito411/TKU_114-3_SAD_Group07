@@ -1,0 +1,41 @@
+flowchart LR
+  buyer["買方學生"]
+  seller["賣方學生"]
+  student["學生使用者"]
+  admin["系統管理員"]
+  outsider["非交易當事人"]
+
+  subgraph system["校內二手書面交預約系統"]
+    uc01(("UC-01 搜尋二手書"))
+    uc02(("UC-02 查看書籍詳細資料"))
+    uc03(("UC-03 送出或取消購買需求"))
+    uc04(("UC-04 刊登、折扣設定與編輯二手書"))
+    uc05(("UC-05 管理購買要求與面交安排"))
+    uc06(("UC-06 查看交易狀態與信箱通知"))
+    uc07(("UC-07 以刊登序號管理交易狀態"))
+    uc08(("UC-08 標記交易失敗與處理停權"))
+    uc09(("UC-09 註冊並登入學生帳號"))
+  end
+
+  buyer --- uc01
+  buyer --- uc02
+  buyer --- uc03
+  buyer --- uc06
+
+  seller --- uc04
+  seller --- uc05
+  seller --- uc06
+  seller --- uc07
+  seller --- uc08
+
+  student --- uc06
+  student --- uc09
+
+  admin --- uc08
+
+  outsider --- uc02
+
+  uc01 -.-> uc02
+  uc03 -.-> uc05
+  uc05 -.-> uc06
+  uc08 -.-> uc06

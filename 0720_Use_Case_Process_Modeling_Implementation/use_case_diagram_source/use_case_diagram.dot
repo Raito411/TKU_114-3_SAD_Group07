@@ -1,0 +1,74 @@
+graph UseCaseDiagram {
+  graph [
+    label="校內二手書面交預約系統 - 使用案例圖",
+    labelloc=t,
+    fontsize=24,
+    fontname="PingFang TC",
+    rankdir=LR,
+    bgcolor="#f7f8fb",
+    pad=0.5,
+    nodesep=0.7,
+    ranksep=1.0
+  ];
+
+  node [
+    fontname="PingFang TC",
+    fontsize=14,
+    color="#4263eb",
+    fillcolor="#eef4ff",
+    style=filled
+  ];
+
+  edge [
+    fontname="PingFang TC",
+    fontsize=11,
+    color="#586174"
+  ];
+
+  buyer [label="買方學生", shape=box, color="#2f3a4f", fillcolor="#ffffff"];
+  seller [label="賣方學生", shape=box, color="#2f3a4f", fillcolor="#ffffff"];
+  student [label="學生使用者", shape=box, color="#2f3a4f", fillcolor="#ffffff"];
+  admin [label="系統管理員", shape=box, color="#2f3a4f", fillcolor="#ffffff"];
+  outsider [label="非交易當事人", shape=box, color="#2f3a4f", fillcolor="#ffffff"];
+
+  subgraph cluster_system {
+    label="校內二手書面交預約系統";
+    fontname="PingFang TC";
+    fontsize=18;
+    color="#4263eb";
+    penwidth=2;
+    style="rounded";
+
+    uc01 [label="UC-01\n搜尋二手書", shape=ellipse];
+    uc02 [label="UC-02\n查看書籍詳細資料", shape=ellipse];
+    uc03 [label="UC-03\n送出或取消購買需求", shape=ellipse];
+    uc04 [label="UC-04\n刊登、折扣設定與\n編輯二手書", shape=ellipse];
+    uc05 [label="UC-05\n管理購買要求與\n面交安排", shape=ellipse];
+    uc06 [label="UC-06\n查看交易狀態與\n信箱通知", shape=ellipse];
+    uc07 [label="UC-07\n以刊登序號管理\n交易狀態", shape=ellipse];
+    uc08 [label="UC-08\n標記交易失敗與\n處理停權", shape=ellipse];
+    uc09 [label="UC-09\n註冊並登入學生帳號", shape=ellipse];
+  }
+
+  buyer -- uc01;
+  buyer -- uc02;
+  buyer -- uc03;
+  buyer -- uc06;
+
+  seller -- uc04;
+  seller -- uc05;
+  seller -- uc06;
+  seller -- uc07;
+  seller -- uc08;
+
+  student -- uc06;
+  student -- uc09;
+
+  admin -- uc08;
+  outsider -- uc02;
+
+  uc01 -- uc02 [style=dashed, label="查到後查看"];
+  uc03 -- uc05 [style=dashed, label="需求進入賣方管理"];
+  uc05 -- uc06 [style=dashed, label="狀態與通知"];
+  uc08 -- uc06 [style=dashed, label="通知交易結果"];
+}
