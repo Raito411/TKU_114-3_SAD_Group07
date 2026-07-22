@@ -72,6 +72,6 @@ GitHub 儲存庫連結：https://github.com/Raito411/TKU_114-3_SAD_Group07
 
 | 類型 | 提交訊息 | Commit 識別碼 |
 | --- | --- | --- |
-| docs |  |  |
-| feat |  |  |
-| test |  |  |
+| feat | feat: add 0720 use case process implementation | 45d040d0770cb3e75cd6f89b5be456470f03e4dd |
+| test | JS 語法檢查與 Python 語法檢查 | 已納入 45d040d0770cb3e75cd6f89b5be456470f03e4dd |
+| docs | docs: record 0720 commit metadata | c78ea95519faaec5e5345243934c32a0ebb7d66a |
